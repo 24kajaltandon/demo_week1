@@ -1,37 +1,9 @@
 pipeline { 
     agent any  
     stages { 
-        stage('validate') { 
+        stage('build') { 
             steps { 
-               sh '''   
-               cd demo
-               mvn validate
-               '''
+               bat "mvn install"
             }
-        }
-         stage('Compile') { 
-            steps { 
-               sh '''
-               cd demo
-               mvn compile
-               '''
-            }
-        }
-        stage('Test') { 
-            steps { 
-               sh '''
-               cd demo
-               mvn test
-               '''
-            }
-        }
-        stage('Install') { 
-            steps { 
-               sh '''
-               cd demo
-               mvn install
-               '''
-            }
-        }
     }
 }
